@@ -1,6 +1,6 @@
 let nombre = prompt("Bienvenido! Para empezar, ingrese su nombre");
 let apellido = prompt("ingrese su apellido");
-let bienvenida = nombre + " " + apellido
+let bienvenida = nombre + " " + apellido;
 
 alert("Los datos ingresados son: " + bienvenida);
 
@@ -69,4 +69,4 @@ function agregarAlCarrito() {
     alert(`El total de su compra es: $${total}`);
 }
 
-agregarAlCarrito()
+agregarAlCarrito();
