@@ -1,0 +1,243 @@
+[
+    {
+      "id": "mother01",
+      "marca": "Asus",
+      "modelo": "Prime A520M-A",
+      "categoria": "Motherboards",
+      "precio": 46200,
+      "imagen": "./images/motherboards/mother1.jpg"
+    },
+    {
+      "id": "mother02",
+      "marca": "Asus",
+      "modelo": "Prime X570-P",
+      "categoria": "Motherboards",
+      "precio": 78150,
+      "imagen": "./images/motherboards/mother2.jpg"
+    },
+    {
+      "id": "mother03",
+      "marca": "Asus",
+      "modelo": "Rog Strix B450-F",
+      "categoria": "Motherboards",
+      "precio": 80200,
+      "imagen": "./images/motherboards/mother3.jpg"
+    },
+    {
+      "id": "mother04",
+      "marca": "Asus",
+      "modelo": "Rog Strix B550-A",
+      "categoria": "Motherboards",
+      "precio": 111300,
+      "imagen": "./images/motherboards/mother4.jpg"
+    },
+    {
+      "id": "mother05",
+      "marca": "Asus",
+      "modelo": "Rog Strix B550-XE",
+      "categoria": "Motherboards",
+      "precio": 159650,
+      "imagen": "./images/motherboards/mother5.jpg"
+    },
+    {
+      "id": "mother06",
+      "marca": "Asus",
+      "modelo": "Rog Strix  X570-E",
+      "categoria": "Motherboards",
+      "precio": 182600,
+      "imagen": "./images/motherboards/mother6.jpg"
+    },
+    {
+      "id": "micro01",
+      "marca": "AMD",
+      "modelo": "Ryzen 5 3600",
+      "categoria": "Microprocesadores",
+      "precio": 79190,
+      "imagen": "./images/procesadores/micro2.jpg"
+    },
+    {
+      "id": "micro02",
+      "marca": "AMD",
+      "modelo": "Ryzen 3 3200G",
+      "categoria": "Microprocesadores",
+      "precio": 66150,
+      "imagen": "./images/procesadores/micro1.jpg"
+    },
+    {
+      "id": "micro03",
+      "marca": "AMD",
+      "modelo": "Ryzen 5 5600X",
+      "categoria": "Microprocesadores",
+      "precio": 141750,
+      "imagen": "./images/procesadores/micro3.jpg"
+    },
+    {
+      "id": "micro04",
+      "marca": "AMD",
+      "modelo": "Ryzen 7 5800X",
+      "categoria": "Microprocesadores",
+      "precio": 205800,
+      "imagen": "./images/procesadores/micro4.jpg"
+    },
+    {
+      "id": "micro05",
+      "marca": "AMD",
+      "modelo": "Ryzen 9 7900X",
+      "categoria": "Microprocesadores",
+      "precio": 281300,
+      "imagen": "./images/procesadores/micro5.jpg"
+    },
+    {
+      "id": "memoria01",
+      "marca": "Adata",
+      "modelo": "DDR4 2x8gb 3600mhz",
+      "categoria": "Memorias RAM",
+      "precio": 46750,
+      "imagen": "./images/memorias_ram/memoria1.jpg"
+    },
+    {
+      "id": "memoria02",
+      "marca": "Adata",
+      "modelo": "DDR4 2x8gb 3600mhz White",
+      "categoria": "Memorias RAM",
+      "precio": 49950,
+      "imagen": "./images/memorias_ram/memoria2.jpg"
+    },
+    {
+      "id": "memoria03",
+      "marca": "GeiL",
+      "modelo": "DDR4 2x8gb 3200mhz",
+      "categoria": "Memorias RAM",
+      "precio": 35950,
+      "imagen": "./images/memorias_ram/memoria3.jpg"
+    },
+    {
+      "id": "memoria04",
+      "marca": "Patriot",
+      "modelo": "DDR4 2x8gb 3600mhz",
+      "categoria": "Memorias RAM",
+      "precio": 51150,
+      "imagen": "./images/memorias_ram/memoria4.jpg"
+    },
+    {
+      "id": "memoria05",
+      "marca": "T-Force",
+      "modelo": "DDR4 2x16gb 3200mhz",
+      "categoria": "Memorias RAM",
+      "precio": 90250,
+      "imagen": "./images/memorias_ram/memoria5.jpg"
+    },
+    {
+      "id": "gpu01",
+      "marca": "Asus",
+      "modelo": "RTX 3060TI 8gb",
+      "categoria": "Placas de video",
+      "precio": 348608,
+      "imagen": "./images/gpu/gpu1.jpg"
+    },
+    {
+      "id": "gpu02",
+      "marca": "Asus",
+      "modelo": "RTX 3070 8gb",
+      "categoria": "Placas de video",
+      "precio": 420430,
+      "imagen": "./images/gpu/gpu2.jpg"
+    },
+    {
+      "id": "gpu03",
+      "marca": "Asus",
+      "modelo": "Rog Strix 3060TI 8gb",
+      "categoria": "Placas de video",
+      "precio": 325830,
+      "imagen": "./images/gpu/gpu3.jpg"
+    },
+    {
+      "id": "gpu04",
+      "marca": "Asus",
+      "modelo": "Rog Strix RTX 3070TI 8gb",
+      "categoria": "Placas de video",
+      "precio": 432200,
+      "imagen": "./images/gpu/gpu4.jpg"
+    },
+    {
+      "id": "gpu05",
+      "marca": "Asus",
+      "modelo": "Rog Strix RTX 4080 16gb",
+      "categoria": "Placas de video",
+      "precio": 892000,
+      "imagen": "./images/gpu/gpu5.jpg"
+    },
+    {
+      "id": "gpu06",
+      "marca": "Asus",
+      "modelo": "Rog Strix RTX 4080 16gb white",
+      "categoria": "Placas de video",
+      "precio": 931000,
+      "imagen": "./images/gpu/gpu6.jpg"
+    },
+    {
+      "id": "gpu07",
+      "marca": "Asus",
+      "modelo": "RTX 3060 12gb",
+      "categoria": "Placas de video",
+      "precio": 268182,
+      "imagen": "./images/gpu/gpu7.jpg"
+    },
+    {
+      "id": "gpu08",
+      "marca": "Asus",
+      "modelo": "TUF Gaming RTX 4080 16gb",
+      "categoria": "Placas de video",
+      "precio": 693500,
+      "imagen": "./images/gpu/gpu8.jpg"
+    },
+    {
+      "id": "disco01",
+      "marca": "Adata",
+      "modelo": "SSD 480gb 520mbs",
+      "categoria": "Almacenamiento",
+      "precio": 18700,
+      "imagen": "./images/almacenamiento/disco1.jpg"
+    },
+    {
+      "id": "disco02",
+      "marca": "Crucial",
+      "modelo": "M.2 500gb NVMe 3500mbs",
+      "categoria": "Almacenamiento",
+      "precio": 26600,
+      "imagen": "./images/almacenamiento/disco2.jpg"
+    },
+    {
+      "id": "disco03",
+      "marca": "Kingston",
+      "modelo": "SSD 960gb 500mbs",
+      "categoria": "Almacenamiento",
+      "precio": 38200,
+      "imagen": "./images/almacenamiento/disco3.jpg"
+    },
+    {
+      "id": "disco04",
+      "marca": "T-Force",
+      "modelo": "M.2 1TB NVMe 3500mbs",
+      "categoria": "Almacenamiento",
+      "precio": 43250,
+      "imagen": "./images/almacenamiento/disco4.jpg"
+    },
+    {
+      "id": "disco05",
+      "marca": "T-Force",
+      "modelo": "SSD 480gb 540mbs",
+      "categoria": "Almacenamiento",
+      "precio": 18350,
+      "imagen": "./images/almacenamiento/disco5.jpg"
+    },
+    {
+      "id": "disco06",
+      "marca": "Western Digital",
+      "modelo": "M.2 2TB NVMe 5150mbs",
+      "categoria": "Almacenamiento",
+      "precio": 131850,
+      "imagen": "./images/almacenamiento/disco6.jpg"
+    }
+  ]
+  
