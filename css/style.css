@@ -9,6 +9,8 @@ body{
   background-attachment: fixed;
 }
 
+      /* CARDS PRODUCTOS */
+
 .productos{
   justify-content:center;
 }
@@ -83,4 +85,31 @@ body{
      
      button:active {
       transform: translate(0em, 0.2em);
+     }
+
+     /* CARDS CARRITO */
+
+     .titulo_carrito{
+      color: aliceblue;
+      background-color: rgba(255,255,255,0.3);
+      text-align: center;
+      margin-top: 6rem;
+     }
+
+     .card_carrito {
+      margin: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 5rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 0.4rem;
+      border-radius: 0.5rem;
+     }
+
+     .card_carrito img{
+      border-radius: 0.3rem;
+      max-height: 5rem;
+      max-width: 5rem;
      }
