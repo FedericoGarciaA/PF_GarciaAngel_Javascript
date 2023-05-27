@@ -1,5 +1,7 @@
 let productos = [];
 
+// RENDERIZADO DE PRODUCTOS EN DOM 
+
 function productosDOM(productosData) {
   productos = productosData;
   const contenedorProductos = document.getElementById("cont_cards");
@@ -50,25 +52,26 @@ function productosDOM(productosData) {
   });
 }
 
+// AGREGAR PRODUCTOS AL CARRITO
+
 function agregarAlCarrito(idProducto) {
-  // Buscar el producto correspondiente por su id en la lista de productos
   const producto = productos.find(producto => producto.id === idProducto);
 
-  // Agregar el producto al carrito
   carrito.push(producto);
 
-  // Actualizar el DOM del carrito
   actualizarCarritoDOM();
+  guardarCarrito();
 }
+
+// RENDERIZADO DEL CARRITO EN DOM 
 
 function actualizarCarritoDOM() {
   const contenedorCarrito = document.querySelector("#cont_carrito");
-  contenedorCarrito.innerHTML = ""; // Limpiar el contenido del carrito antes de actualizarlo
+  contenedorCarrito.innerHTML = ""; 
 
   carrito.forEach(producto => {
     const productoCarrito = document.createElement("div");
     productoCarrito.classList.add("card_carrito")
-    // Crea los elementos HTML correspondientes para mostrar los detalles del producto (imagen, título, precio, etc.)
     const carritoImagen = document.createElement("div");
     carritoImagen.classList.add("carrito_imagen");
     const img = document.createElement("img");
@@ -95,9 +98,6 @@ function actualizarCarritoDOM() {
     productoCarrito.appendChild(botonEliminar);
     
     contenedorCarrito.appendChild(productoCarrito);
-    // Agrega los elementos al productoItem
-
-    // contenedorCarrito.appendChild(productoCarrito);
   });
 }
 
@@ -110,7 +110,23 @@ fetch("js/data.json")
     productosDOM(productos);
   });
 
+  // ALMACENADO DE CARRITO EN LOCALSTORAGE
 
+  function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
+  
+  // CARGAR CARRITO DEL LOCALSTORAGE
+  
+  function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+      carrito = JSON.parse(carritoGuardado);
+      actualizarCarritoDOM();
+    }
+  }
+  
+  cargarCarrito();
   
 
 
