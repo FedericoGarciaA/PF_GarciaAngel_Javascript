@@ -46,9 +46,10 @@ function productosDOM(productosData) {
     contenedorProductos.appendChild(productoCard);
 
     botonAgregar.addEventListener("click", function() {
-      const idProducto = this.id.split("-")[1]; 
+      const idProducto = producto.id; 
       agregarAlCarrito(idProducto);
     });
+    
   });
 }
 
@@ -62,6 +63,21 @@ function agregarAlCarrito(idProducto) {
   actualizarCarritoDOM();
   guardarCarrito();
 }
+
+// ELIMINAR PRODUCTOS DEL CARRITO
+
+function eliminarDelCarrito(idProducto) {
+  const index = carrito.findIndex(producto => producto.id === idProducto);
+  if (index !== -1) {
+    carrito.splice(index, 1);
+    actualizarCarritoDOM();
+    guardarCarrito();
+  }
+}
+
+// VACIAR CARRITO
+
+
 
 // RENDERIZADO DEL CARRITO EN DOM 
 
@@ -98,8 +114,15 @@ function actualizarCarritoDOM() {
     productoCarrito.appendChild(botonEliminar);
     
     contenedorCarrito.appendChild(productoCarrito);
+
+    botonEliminar.addEventListener("click", function() {
+      const idProducto = producto.id; 
+      eliminarDelCarrito(idProducto);
+    });
   });
 }
+
+
 
 let carrito = [];
 
