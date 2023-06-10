@@ -62,15 +62,6 @@ function productosDOM(productosData) {
   });
 }
 
-// function agregarAlCarrito(idProducto) {
-//   const producto = productos.find((producto) => producto.id === idProducto);
-
-//   carrito.push(producto);
-
-//   actualizarCarritoDOM();
-//   guardarCarrito();
-// }
-
 function eliminarDelCarrito(idProducto) {
   const index = carrito.findIndex((item) => item.producto.id === idProducto);
   if (index !== -1) {
