@@ -202,10 +202,10 @@ function cargarCarrito() {
   }
 }
 
-// cargarCarrito();
+cargarCarrito();
 
-// const botonVaciarCarrito = document.querySelector(".boton_vaciar");
-// botonVaciarCarrito.addEventListener("click", vaciarCarrito);
+const botonVaciarCarrito = document.querySelector(".boton_vaciar");
+botonVaciarCarrito.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
   carrito = [];
@@ -214,42 +214,42 @@ function vaciarCarrito() {
   guardarCarrito();
 }
 
-// const botonTodos = document.getElementById("boton_todos");
-// const botonMothers = document.getElementById("boton_mothers");
-// const botonMicros = document.getElementById("boton_micros");
-// const botonMemorias = document.getElementById("boton_memorias");
-// const botonGPU = document.getElementById("boton_gpu");
-// const botonDiscos = document.getElementById("boton_discos");
+const botonTodos = document.getElementById("boton_todos");
+const botonMothers = document.getElementById("boton_mothers");
+const botonMicros = document.getElementById("boton_micros");
+const botonMemorias = document.getElementById("boton_memorias");
+const botonGPU = document.getElementById("boton_gpu");
+const botonDiscos = document.getElementById("boton_discos");
 
-// botonTodos.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Todos");
-//   productosDOM(productosFiltrados);
-// });
+botonTodos.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Todos");
+  productosDOM(productosFiltrados);
+});
 
-// botonMothers.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Motherboards");
-//   productosDOM(productosFiltrados);
-// });
+botonMothers.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Motherboards");
+  productosDOM(productosFiltrados);
+});
 
-// botonMicros.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Microprocesadores");
-//   productosDOM(productosFiltrados);
-// });
+botonMicros.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Microprocesadores");
+  productosDOM(productosFiltrados);
+});
 
-// botonMemorias.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Memorias RAM");
-//   productosDOM(productosFiltrados);
-// });
+botonMemorias.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Memorias RAM");
+  productosDOM(productosFiltrados);
+});
 
-// botonGPU.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Placas de video");
-//   productosDOM(productosFiltrados);
-// });
+botonGPU.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Placas de video");
+  productosDOM(productosFiltrados);
+});
 
-// botonDiscos.addEventListener("click", function () {
-//   const productosFiltrados = filtrarProductos(productos, "Almacenamiento");
-//   productosDOM(productosFiltrados);
-// });
+botonDiscos.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Almacenamiento");
+  productosDOM(productosFiltrados);
+});
 
 function filtrarProductos(productos, categoria) {
   if (categoria === "Todos") {
@@ -261,10 +261,10 @@ function filtrarProductos(productos, categoria) {
 
 // MODAL
 
-// const modal = document.getElementById('modalCompra');
-// const formularioCompra = document.getElementById('formularioCompra');
-// const botonComprar = document.querySelector('.boton_comprar');
-// const closeButton = document.querySelector('.close');
+const modal = document.getElementById('modalCompra');
+const formularioCompra = document.getElementById('formularioCompra');
+const botonComprar = document.querySelector('.boton_comprar');
+const closeButton = document.querySelector('.close');
 
 function abrirModal() {
   modal.style.display = 'block';
@@ -274,34 +274,34 @@ function cerrarModal() {
   modal.style.display = 'none';
 }
 
-// botonComprar.addEventListener('click', function(event) {
-//   event.preventDefault(); 
-//   abrirModal();
-// });
+botonComprar.addEventListener('click', function(event) {
+  event.preventDefault(); 
+  abrirModal();
+});
 
-// closeButton.addEventListener('click', cerrarModal);
+closeButton.addEventListener('click', cerrarModal);
 
-// window.addEventListener('click', function(event) {
-//   if (event.target === modal) {
-//     cerrarModal();
-//   }
-// });
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    cerrarModal();
+  }
+});
 
-// formularioCompra.addEventListener('submit', function(event) {
-//   event.preventDefault();
+formularioCompra.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-//   cerrarModal();
-// });
+  cerrarModal();
+});
 
-// formularioCompra.addEventListener('submit', function(event) {
-// event.preventDefault();
+formularioCompra.addEventListener('submit', function(event) {
+event.preventDefault();
   
-// Swal.fire({
-// title: '¡Gracias por tu compra!',
-// text: 'Hemos recibido tu pedido. ¡Disfruta de tu compra!',
-// icon: 'success',
-// confirmButtonText: 'Aceptar'
-// });
+Swal.fire({
+title: '¡Gracias por tu compra!',
+text: 'Hemos recibido tu pedido. ¡Disfruta de tu compra!',
+icon: 'success',
+confirmButtonText: 'Aceptar'
+});
 
-// cerrarModal();
-//  });
+cerrarModal();
+ });
