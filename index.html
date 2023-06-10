@@ -19,69 +19,117 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
     <main>
-      <div class="dropdown" data-bs-theme="dark">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Categorias
-        </button>
-        <ul class="dropdown-menu">
+      <div class="cont-nav" >
+        <div class="cont-logo"><img src="./images/byteshore_logo.png" alt=""></div>
+        <ul class="categorias-nav">
           <li>
-            <button class="dropdown-item" type="button">Motherboards</button>
-          </li>
-          <li>
-            <button class="dropdown-item" type="button">
-              Microprocesadores
+            <button id="boton_todos" type="button">
+            Todos los productos
             </button>
           </li>
           <li>
-            <button class="dropdown-item" type="button">Memorias ram</button>
+            <button id="boton_mothers" type="button">
+            Motherboards
+            </button>
           </li>
           <li>
-            <button class="dropdown-item" type="button">Placas de video</button>
+            <button id="boton_micros" type="button">
+            Microprocesadores
+            </button>
           </li>
           <li>
-            <button class="dropdown-item" type="button">Almacenamiento</button>
+            <button id="boton_memorias" type="button">
+            Memorias ram
+            </button>
+          </li>
+          <li>
+            <button id="boton_gpu" type="button">
+              Placas de video
+            </button>
+          </li>
+          <li>
+            <button id="boton_discos" type="button">
+              Almacenamiento
+            </button>
           </li>
         </ul>
       </div>
       <section class="container" id="cont_productos">
         <div class="row" id="cont_cards">
-            <!-- PRODUCTOS AGREGADOS DESDE JS  -->
+          <!-- PRODUCTOS AGREGADOS DESDE JS  -->
         </div>
       </section>
     </main>
 
-            <!-- CARRITO -->
-      <section class="container" id="carrito">
-        <h2 class="titulo_carrito">TU CARRITO</h2>
-        <div class id="cont_carrito">
-          <p>tu carrito esta vacio</p>
-        </div>
-        </section>
-
-
-        </div class="container">
-        <div class="acciones_carrito row">
-          <button class="boton_comprar col">Comprar</button>
-          <button class="boton_vaciar col">Vaciar carrito</button>
-          <p class="total_carrito col">TOTAL: $</p>
-        </div>        
+    <!-- CARRITO -->
+    <section class="container" id="carrito">
+      <h2 class="titulo_carrito">TU CARRITO</h2>
+      <div class id="cont_carrito">
+        <p>tu carrito esta vacio</p>
       </div>
+    </section>
 
-    <script src="./js/app.js"></script>
+    <div class="container">
+      <div class="row">
+        <p class="total_carrito col">TOTAL DE TU CARRITO: $ 0.00</p>
+      </div>
+      <div class="acciones_carrito row">
+        <button class="boton_comprar col">Comprar</button>
+        <button class="boton_vaciar col">Vaciar carrito</button>
+      </div>
+    </div>
+
+
+    <div id="modalCompra" class="modal ">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Finaliza tu compra!</h2>
+        <form id="formularioCompra">
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+          </div>
+          <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" required>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+          </div>
+          <button type="submit" class="boton_finalizar">Finalizar compra</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+        <p>Sitio web con fines educativos</p>
+        <p>Proyecto final Javascript Coderhouse 2023</p>
+        <p>Federico Garcia Angel</p>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
+    <script src="./js/app.js"></script>
+
+
   </body>
 </html>

@@ -1,13 +1,21 @@
 let productos = [];
+let carrito = [];
 
-// RENDERIZADO DE PRODUCTOS EN DOM 
+fetch("js/data.json")
+  .then((respuesta) => respuesta.json())
+  .then((data) => {
+    productos = data;
+    productosDOM(productos);
+  })
+  .catch((error) => {
+    console.log("Error al cargar los productos:", error);
+  });
 
 function productosDOM(productosData) {
-  productos = productosData;
   const contenedorProductos = document.getElementById("cont_cards");
   contenedorProductos.innerHTML = "";
 
-  productos.forEach(producto => {
+  productosData.forEach((producto) => {
     const id = producto.id;
     const marca = producto.marca;
     const modelo = producto.modelo;
@@ -17,46 +25,43 @@ function productosDOM(productosData) {
 
     const productoCard = document.createElement("div");
     productoCard.classList.add("card");
-    
+
     const productoImagen = document.createElement("div");
     productoImagen.classList.add("image");
     const img = document.createElement("img");
     img.src = imagen;
-    img.alt = '';
-    
+    img.alt = "";
+
     const productoTitulo = document.createElement("div");
     productoTitulo.classList.add("titulo");
     productoTitulo.textContent = marca + " " + modelo;
-    
+
     const productoPrecio = document.createElement("div");
     productoPrecio.classList.add("precio");
     productoPrecio.textContent = "$" + precio;
 
-    const botonAgregar = document.createElement("button")
+    const botonAgregar = document.createElement("button");
     botonAgregar.classList.add("boton_agregar");
-    botonAgregar.textContent = "Agregar al carrito"
+    botonAgregar.textContent = "Agregar al carrito";
     botonAgregar.id = "botonAgregar-" + id;
-    
+
     productoImagen.appendChild(img);
     productoCard.appendChild(productoImagen);
     productoCard.appendChild(productoTitulo);
     productoCard.appendChild(productoPrecio);
     productoCard.appendChild(botonAgregar);
-    
+
     contenedorProductos.appendChild(productoCard);
 
-    botonAgregar.addEventListener("click", function() {
-      const idProducto = producto.id; 
+    botonAgregar.addEventListener("click", function () {
+      const idProducto = producto.id;
       agregarAlCarrito(idProducto);
     });
-    
   });
 }
 
-// AGREGAR PRODUCTOS AL CARRITO
-
 function agregarAlCarrito(idProducto) {
-  const producto = productos.find(producto => producto.id === idProducto);
+  const producto = productos.find((producto) => producto.id === idProducto);
 
   carrito.push(producto);
 
@@ -64,149 +69,237 @@ function agregarAlCarrito(idProducto) {
   guardarCarrito();
 }
 
-// ELIMINAR PRODUCTOS DEL CARRITO
-
 function eliminarDelCarrito(idProducto) {
-  const index = carrito.findIndex(producto => producto.id === idProducto);
+  const index = carrito.findIndex((item) => item.producto.id === idProducto);
   if (index !== -1) {
-    carrito.splice(index, 1);
+    const cantidad = carrito[index].cantidad;
+    if (cantidad > 1) {
+      carrito[index].cantidad -= 1;
+    } else {
+      carrito.splice(index, 1);
+    }
+    Toastify({
+      text: '¡Producto eliminado del carrito!',
+      duration: 3000,
+      gravity: 'top', 
+      close: true,
+      backgroundColor: "#C90E0E" 
+    }).showToast();
     actualizarCarritoDOM();
     guardarCarrito();
   }
 }
 
-// VACIAR CARRITO
+function agregarAlCarrito(idProducto) {
+  const producto = productos.find((producto) => producto.id === idProducto);
 
+  const productoEnCarrito = carrito.find(
+    (item) => item.producto.id === idProducto
+  );
+  if (productoEnCarrito) {
+    productoEnCarrito.cantidad += 1;
+  } else {
+    carrito.push({ producto: producto, cantidad: 1 });
+  }
 
+  Toastify({
+    text: '¡Producto agregado al carrito!',
+    duration: 3000,
+    gravity: 'top', 
+    close: true,
+    backgroundColor: "#05BB51" 
+  }).showToast();
 
-// RENDERIZADO DEL CARRITO EN DOM 
+  actualizarCarritoDOM();
+  guardarCarrito();
+}
 
-function actualizarCarritoDOM() {
-  const contenedorCarrito = document.querySelector("#cont_carrito");
-  contenedorCarrito.innerHTML = ""; 
-
-  carrito.forEach(producto => {
-    const productoCarrito = document.createElement("div");
-    productoCarrito.classList.add("card_carrito")
-    const carritoImagen = document.createElement("div");
-    carritoImagen.classList.add("carrito_imagen");
-    const img = document.createElement("img");
-    img.src = producto.imagen;
-    img.alt = '';
-    
-    const carritoTitulo = document.createElement("div");
-    carritoTitulo.classList.add("carrito_titulo");
-    carritoTitulo.textContent = producto.marca + " " + producto.modelo;
-    
-    const carritoPrecio = document.createElement("div");
-    carritoPrecio.classList.add("carrito_precio");
-    carritoPrecio.textContent = "$" + producto.precio;
-
-    const botonEliminar = document.createElement("button")
-    botonEliminar.classList.add("boton_eliminar");
-    botonEliminar.textContent = "Eliminar del carrito"
-    botonEliminar.id = "botonEliminar-" + producto.id;
-    
-    carritoImagen.appendChild(img);
-    productoCarrito.appendChild(carritoImagen);
-    productoCarrito.appendChild(carritoTitulo);
-    productoCarrito.appendChild(carritoPrecio);
-    productoCarrito.appendChild(botonEliminar);
-    
-    contenedorCarrito.appendChild(productoCarrito);
-
-    botonEliminar.addEventListener("click", function() {
-      const idProducto = producto.id; 
-      eliminarDelCarrito(idProducto);
-    });
+function calcularTotalCarrito() {
+  const total = carrito.reduce(
+    (acumulador, item) => acumulador + item.producto.precio * item.cantidad,
+    0
+  );
+  return total.toLocaleString("es-ES", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   });
 }
 
+function actualizarCarritoDOM() {
+  const contenedorCarrito = document.querySelector("#cont_carrito");
+  contenedorCarrito.innerHTML = "";
 
+  if (carrito.length === 0) {
+    const carritoVacio = document.createElement("div");
+    carritoVacio.classList.add("carrito_vacio");
+    carritoVacio.textContent = "Tu carrito está vacío :(";
+    contenedorCarrito.appendChild(carritoVacio);
+    const totalCarrito = document.querySelector(".total_carrito");
+    totalCarrito.textContent =
+      "TOTAL DE TU CARRITO: $" + calcularTotalCarrito();
+  } else {
+    carrito.forEach((item) => {
+      const producto = item.producto;
+      const cantidad = item.cantidad;
 
-let carrito = [];
+      const productoCarrito = document.createElement("div");
+      productoCarrito.classList.add("card_carrito");
 
-fetch("js/data.json")
-  .then(respuesta => respuesta.json())
-  .then(data => {
-    const productos = data;
-    productosDOM(productos);
-  });
+      const carritoImagen = document.createElement("div");
+      carritoImagen.classList.add("carrito_imagen");
+      const img = document.createElement("img");
+      img.src = producto.imagen;
+      img.alt = "";
 
-  // ALMACENADO DE CARRITO EN LOCALSTORAGE
+      const carritoTitulo = document.createElement("div");
+      carritoTitulo.classList.add("carrito_titulo");
+      carritoTitulo.textContent = producto.marca + " " + producto.modelo;
 
-  function guardarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+      const carritoPrecio = document.createElement("div");
+      carritoPrecio.classList.add("carrito_precio");
+      carritoPrecio.textContent = "$" + producto.precio;
+
+      const carritoCantidad = document.createElement("div");
+      carritoCantidad.classList.add("carrito_cantidad");
+      carritoCantidad.textContent = "Cantidad: " + cantidad;
+
+      const botonEliminar = document.createElement("button");
+      botonEliminar.classList.add("boton_eliminar");
+      botonEliminar.textContent = "Eliminar del carrito";
+      botonEliminar.id = "botonEliminar-" + producto.id;
+
+      carritoImagen.appendChild(img);
+      productoCarrito.appendChild(carritoImagen);
+      productoCarrito.appendChild(carritoTitulo);
+      productoCarrito.appendChild(carritoPrecio);
+      productoCarrito.appendChild(carritoCantidad);
+      productoCarrito.appendChild(botonEliminar);
+
+      contenedorCarrito.appendChild(productoCarrito);
+
+      botonEliminar.addEventListener("click", function () {
+        const idProducto = producto.id;
+        eliminarDelCarrito(idProducto);
+      });
+    });
+    const totalCarrito = document.querySelector(".total_carrito");
+    totalCarrito.textContent =
+      "TOTAL DE TU CARRITO: $" + calcularTotalCarrito();
   }
-  
-  // CARGAR CARRITO DEL LOCALSTORAGE
-  
-  function cargarCarrito() {
-    const carritoGuardado = localStorage.getItem('carrito');
-    if (carritoGuardado) {
-      carrito = JSON.parse(carritoGuardado);
-      actualizarCarritoDOM();
-    }
+}
+
+function guardarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function cargarCarrito() {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    actualizarCarritoDOM();
   }
+}
+
+cargarCarrito();
+
+const botonVaciarCarrito = document.querySelector(".boton_vaciar");
+botonVaciarCarrito.addEventListener("click", vaciarCarrito);
+
+function vaciarCarrito() {
+  carrito = [];
+
+  actualizarCarritoDOM();
+  guardarCarrito();
+}
+
+const botonTodos = document.getElementById("boton_todos");
+const botonMothers = document.getElementById("boton_mothers");
+const botonMicros = document.getElementById("boton_micros");
+const botonMemorias = document.getElementById("boton_memorias");
+const botonGPU = document.getElementById("boton_gpu");
+const botonDiscos = document.getElementById("boton_discos");
+
+botonTodos.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Todos");
+  productosDOM(productosFiltrados);
+});
+
+botonMothers.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Motherboards");
+  productosDOM(productosFiltrados);
+});
+
+botonMicros.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Microprocesadores");
+  productosDOM(productosFiltrados);
+});
+
+botonMemorias.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Memorias RAM");
+  productosDOM(productosFiltrados);
+});
+
+botonGPU.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Placas de video");
+  productosDOM(productosFiltrados);
+});
+
+botonDiscos.addEventListener("click", function () {
+  const productosFiltrados = filtrarProductos(productos, "Almacenamiento");
+  productosDOM(productosFiltrados);
+});
+
+function filtrarProductos(productos, categoria) {
+  if (categoria === "Todos") {
+    return productos.slice();
+  } else {
+    return productos.filter((producto) => producto.categoria === categoria);
+  }
+}
+
+// MODAL
+
+const modal = document.getElementById('modalCompra');
+const formularioCompra = document.getElementById('formularioCompra');
+const botonComprar = document.querySelector('.boton_comprar');
+const closeButton = document.querySelector('.close');
+
+function abrirModal() {
+  modal.style.display = 'block';
+}
+
+function cerrarModal() {
+  modal.style.display = 'none';
+}
+
+botonComprar.addEventListener('click', function(event) {
+  event.preventDefault(); 
+  abrirModal();
+});
+
+closeButton.addEventListener('click', cerrarModal);
+
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    cerrarModal();
+  }
+});
+
+formularioCompra.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  cerrarModal();
+});
+
+formularioCompra.addEventListener('submit', function(event) {
+event.preventDefault();
   
-  cargarCarrito();
-  
+Swal.fire({
+title: '¡Gracias por tu compra!',
+text: 'Hemos recibido tu pedido. ¡Disfruta de tu compra!',
+icon: 'success',
+confirmButtonText: 'Aceptar'
+});
 
-
-
-// let containerCards = document.querySelector("#cont_cards");
-// containerCards.innerHTML = `<div class="card">
-// <div class="image"><img src="${disco1.imagen}}" alt=""></div>
-//   <span class="title">Cool Chair</span>
-//   <span class="price">$100</span>
-// </div>`;
-
-// FILTROS POR CATEGORIA
-
-// const motherboards = productos.filter((producto) => producto.categoria === "Motherboards")
-// const microprocesadores = productos.filter((producto) => producto.categoria === "Microprocesadores")
-// const memorias = productos.filter((producto) => producto.categoria === "Memorias RAM")
-// const gpu = productos.filter((producto) => producto.categoria === "Placas de video")
-// const almacenamiento = productos.filter((producto) => producto.categoria === "Almacenamiento")
-
-
-
-// FILTROS POR PRECIO
-
-// const precioMenorA100 = productos.filter((producto) => (producto.precio <= 100000))
-// const precioEntre100y300 = productos.filter((producto) => (producto.precio > 100000 && producto.precio <= 300000))
-// const precioMayorA300 = productos.filter((producto) => producto.precio > 300000)
-
-// console.log(precioMenorA100);
-// console.log(precioEntre100y300);
-// console.log(precioMayorA300);
-
-// CARRITO
-
-// let carrito = []
-
-// function agregarAlCarrito(producto) {
-//     carrito.push(producto)
-//     return carrito
-// }
-
-// agregarAlCarrito(mother4)
-// agregarAlCarrito(micro3)
-// agregarAlCarrito(memoria5)
-// agregarAlCarrito(gpu3)
-// agregarAlCarrito(disco2)
-
-// console.log(carrito);
-
-// // SUMATORIA DE PRODUCTOS EN CARRITO
-
-// function totalCarrito() {
-//     let total = 0;
-//     for (let i = 0; i < carrito.length; i++) {
-//         total += carrito[i].precio;
-//     }
-//     return total;
-// }
-
-// const total = totalCarrito();
-// console.log(`El total de tu carrito es: $ ${total}`)
+cerrarModal();
+ });
