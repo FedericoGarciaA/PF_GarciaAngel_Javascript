@@ -133,7 +133,7 @@
       "modelo": "RTX 3060TI 8gb",
       "categoria": "Placas de video",
       "precio": 348608,
-      "imagen": "./images/gpu/gpu1.jpg"
+      "imagen": "./images/GPU/gpu1.jpg"
     },
     {
       "id": "gpu02",
@@ -141,7 +141,7 @@
       "modelo": "RTX 3070 8gb",
       "categoria": "Placas de video",
       "precio": 420430,
-      "imagen": "./images/gpu/gpu2.jpg"
+      "imagen": "./images/GPU/gpu2.jpg"
     },
     {
       "id": "gpu03",
@@ -149,7 +149,7 @@
       "modelo": "Rog Strix 3060TI 8gb",
       "categoria": "Placas de video",
       "precio": 325830,
-      "imagen": "./images/gpu/gpu3.jpg"
+      "imagen": "./images/GPU/gpu3.jpg"
     },
     {
       "id": "gpu04",
@@ -157,7 +157,7 @@
       "modelo": "Rog Strix RTX 3070TI 8gb",
       "categoria": "Placas de video",
       "precio": 432200,
-      "imagen": "./images/gpu/gpu4.jpg"
+      "imagen": "./images/GPU/gpu4.jpg"
     },
     {
       "id": "gpu05",
@@ -165,7 +165,7 @@
       "modelo": "Rog Strix RTX 4080 16gb",
       "categoria": "Placas de video",
       "precio": 892000,
-      "imagen": "./images/gpu/gpu5.jpg"
+      "imagen": "./images/GPU/gpu5.jpg"
     },
     {
       "id": "gpu06",
@@ -173,7 +173,7 @@
       "modelo": "Rog Strix RTX 4080 16gb white",
       "categoria": "Placas de video",
       "precio": 931000,
-      "imagen": "./images/gpu/gpu6.jpg"
+      "imagen": "./images/GPU/gpu6.jpg"
     },
     {
       "id": "gpu07",
@@ -181,7 +181,7 @@
       "modelo": "RTX 3060 12gb",
       "categoria": "Placas de video",
       "precio": 268182,
-      "imagen": "./images/gpu/gpu7.jpg"
+      "imagen": "./images/GPU/gpu7.jpg"
     },
     {
       "id": "gpu08",
@@ -189,7 +189,7 @@
       "modelo": "TUF Gaming RTX 4080 16gb",
       "categoria": "Placas de video",
       "precio": 693500,
-      "imagen": "./images/gpu/gpu8.jpg"
+      "imagen": "./images/GPU/gpu8.jpg"
     },
     {
       "id": "disco01",
